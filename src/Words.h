@@ -9,7 +9,7 @@ typedef struct {
 Word;
 
 const char LETTERS[10][11] = {
- {'I', 'T', 'L', 'I', 'S', 'A', 'S', 'T', 'I', 'M', 'E' }, // 0
+ {'I', 'T', 'L', 'I', 'S', 'S', 'A', 'T', 'I', 'M', 'E' }, // 0
  {'A', 'C', 'Q', 'U', 'A', 'R', 'T', 'E', 'R', 'D', 'C' }, // 1
  {'T', 'W', 'E', 'N', 'T', 'Y', 'F', 'I', 'V', 'E', 'X' }, // 2
  {'H', 'A', 'L', 'F', 'B', 'T', 'E', 'N', 'F', 'T', 'O' }, // 3
@@ -32,7 +32,7 @@ const Word INFIX_AFTER = {4, 0, 4}; // PAST
 const Word SUFFIX_OCLOCK = {9, 5, 6}; // OCLOCK
 
 const Word MINUTE_FIVE = {2, 6, 4}; // FIVE
-const Word MINUTE_TEN = {9, 0, 3}; // TEN
+const Word MINUTE_TEN = { 3, 5, 3 }; // TEN
 const Word MINUTE_QUARTER = {1, 2, 7}; // QUARTER
 const Word MINUTE_TWENTY = {2, 0, 6}; // TWENTY
 const Word MINUTE_HALF = {3, 0, 4}; // HALF
@@ -42,12 +42,12 @@ const Word HOURS[12] = {
 	{6, 8, 3}, // TWO
 	{5, 6, 5}, // THREE
 	{6, 0, 4}, // FOUR
-	MINUTE_FIVE, // FIVE
+	{6, 4, 4}, // FIVE
 	{5, 3, 3}, // SIX
 	{8, 0, 5}, // SEVEN
 	{7, 0, 5}, // EIGHT
 	{4, 7, 4}, // NINE
-	MINUTE_TEN,
+	{9, 0, 3}, // TEN
 	{7, 5, 6}, // ELEVEN
 	{8, 5, 6}, // TWELVE
 };

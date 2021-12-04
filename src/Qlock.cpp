@@ -8,29 +8,53 @@
 #include "Words.h"
 #endif
 
-GFXcanvas1 canvas(200,200);
+const short COLWIDTH = 18;
+const short ROWHEIGHT = 20;
 
 Qlock::Qlock(){
-	display.setFont(&FreeMonoBold9pt7b);
-	display.setTextSize(1);
-	display.getTextBounds("W", 0, 0, &x1, &y1, &w, &h);
-}; //constructor
+	// // start unlit
+	// for (short i = 0; i < 110; i++) {
+	// 	currentLit[i] = false;
+	// }
+} //constructor
 
 void Qlock::drawWatchFace() {
   display.fillScreen(GxEPD_WHITE);
+	display.setTextColor(GxEPD_BLACK);
+	display.setTextWrap(false);
 	drawTime();
 };
 
 void Qlock::drawTime() {
 	Serial.printf("x1: %d, x2: %d, w: %d, h: %d\n", x1, y1, w, h);
-	display.setFont(&FreeMono9pt7b);
+	display.setFont(&FreeSans9pt7b);
+	display.setTextSize(1);
 	display.setTextColor(GxEPD_BLACK);
 	display.setTextWrap(false);
-	for (int i = 0; i < 10; i++) {
-		display.setCursor(2 + ((i + 1) * h), 2);
-		Serial.printf("row: %s\n", LETTERS[i]);
-		Serial.printf("cursor: %d, %d\n", display.getCursorX(), display.getCursorY());
-		display.println(*LETTERS[i]);
+	for (int col = 0; col < 11; col++) {
+		for (int row = 0; row < 10; row++) {
+			char letter = LETTERS[row][col];
+			short x = col * COLWIDTH;
+			short y = row * ROWHEIGHT + 17;
+			display.getTextBounds(String(letter), x, y, &x1, &y1, &w, &h);
+			// asprintf(&logStr, "Letter %s getTextBounds output: &x1 = %d, &y1 = %d, &w = %d, &h = %d", letter, x1, y1, w, h);
+			// Serial.println(logStr);
+			short startCursor = x + (COLWIDTH - w) / 2;
+			display.setCursor(startCursor, y);
+			if (letter == 'O' || letter == 'F' || letter == 'I') {
+				Serial.printf("printing letter %c", letter);
+				Serial.printf(" row %d, col %d", row, col);
+				Serial.println("");
+				Serial.printf("x = %d (col * %d), y = %d (row * %d + 17)", x, COLWIDTH, y, ROWHEIGHT);
+				Serial.println("");
+				Serial.printf("textBounds: x1 = %d, y1 = %d, w = %d, h = %d", x1, y1, w, h);
+				Serial.println("");
+				Serial.printf("display.setCursor(%d (%d + (%d - %d) / 2, or (x + (COLWIDTH - w) - 2, %d (y))", startCursor, x, COLWIDTH, w, y);
+				Serial.println("");
+				Serial.println("");
+			}
+			display.print(letter);
+		}
 	}
 };
 
