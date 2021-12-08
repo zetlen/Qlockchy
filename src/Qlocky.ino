@@ -4,7 +4,7 @@
 
 #ifndef QLOCK_C
 #define QLOCK_C
-#include "Qlock.h"
+#include "./Qlock.h"
 #endif
 
 Qlock face; //instantiate watchface

@@ -9,6 +9,7 @@ typedef struct {
 Word;
 
 const char LETTERS[10][11] = {
+// 0    1    2    3    4    5    6    7    8    9   10	
  {'I', 'T', 'L', 'I', 'S', 'S', 'A', 'T', 'I', 'M', 'E' }, // 0
  {'A', 'C', 'Q', 'U', 'A', 'R', 'T', 'E', 'R', 'D', 'C' }, // 1
  {'T', 'W', 'E', 'N', 'T', 'Y', 'F', 'I', 'V', 'E', 'X' }, // 2
@@ -26,6 +27,8 @@ const char LETTERS[10][11] = {
 const Word PREFIX_IT = {0, 0, 2}; // IT
 const Word PREFIX_IS = {0, 3, 2}; // IS
 
+const Word EMPTY = { 0, 0, 0 }; // for times with less than five parts
+
 const Word INFIX_BEFORE = {3, 9, 2}; // TO
 const Word INFIX_AFTER = {4, 0, 4}; // PAST
 
@@ -33,6 +36,7 @@ const Word SUFFIX_OCLOCK = {9, 5, 6}; // OCLOCK
 
 const Word MINUTE_FIVE = {2, 6, 4}; // FIVE
 const Word MINUTE_TEN = { 3, 5, 3 }; // TEN
+const Word INDEFINITE_ARTICLE = { 0,6,1 }; // A
 const Word MINUTE_QUARTER = {1, 2, 7}; // QUARTER
 const Word MINUTE_TWENTY = {2, 0, 6}; // TWENTY
 const Word MINUTE_HALF = {3, 0, 4}; // HALF

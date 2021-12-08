@@ -1,13 +1,8 @@
 #include <Watchy.h>
 #include <Arduino.h>
-#include <Fonts/FreeSans9pt7b.h>
-
-// typedef struct {
-// 	int x;
-// 	int y;
-// 	char letter;
-// 	GFXfont font;
-// }
+#include "./TimeSayer.h"
+#include "./Jost_Light10pt7b.h"
+#include "./Jost_SemiBold10pt7b.h"
 
 class Qlock : public Watchy{
 	private:
@@ -17,8 +12,11 @@ class Qlock : public Watchy{
 		int16_t y1;
 		uint16_t w;
 		uint16_t h;
+		int8_t wordIndex = -1;
+		const Word* currentWord;
+		TimeSayer timeSayer;
+		void nextWord();
 	public:
 			Qlock();
 			void drawWatchFace();
-			void drawTime();
 };
